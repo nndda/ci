@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO=$(GH_PAGER=cat gh repo view --json nameWithOwner -q .nameWithOwner)
+REPO=${$REPO:-$(GH_PAGER=cat gh repo view --json nameWithOwner -q .nameWithOwner)}
 
 echo "Repository: $REPO"
 
