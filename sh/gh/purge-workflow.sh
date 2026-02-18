@@ -7,7 +7,7 @@ echo "Repository: $REPO"
 remove_run() {
   echo "Removing workflow: $run_id"
 
-  curl -L \
+  curl -fsSL \
     -X DELETE \
     -H "Authorization: Bearer $GITHUB_TOKEN" \
     -H "Accept: application/vnd.github+json" \
@@ -16,7 +16,7 @@ remove_run() {
 }
 
 get_runs() {
-  curl -sL \
+  curl -fsSL \
     -H "Authorization: token $GITHUB_TOKEN" \
     -H "Accept: application/vnd.github+json" \
     -H "X-GitHub-Api-Version: 2022-11-28" \
@@ -58,7 +58,7 @@ while read -r workflow; do
 
 done < <(
   echo "Getting 'https://api.github.com/repos/$REPO/actions/workflows'..."
-  curl -sL \
+  curl -fsSL \
   -H "Authorization: token $GITHUB_TOKEN" \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
